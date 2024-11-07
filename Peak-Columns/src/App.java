@@ -2,42 +2,103 @@ public class App {
     public static void main(String[] args) throws Exception {
         
         int[][] matrixA = {
-            {3,5,6,7,7},
-            {4,2,2,8,9},
-            {6,3,2,9,7}
+            {12,2,4},
+            {17,10,1},
+            {92,80,79}
         };
 
+        findPeakColumn(matrixA);
 
-        int index = 0;
-        int rows = matrixA.length;
-        int max = 0;
-        int columsPosition = -1;
-        int row = -1;
-        boolean flag = false;
 
-        while (index < rows){
-            for (int i = 1; i < matrixA[0].length; i++){
-                if (matrixA[index][i] > matrixA[index][i-1]){
-                    max = matrixA[index][i];
-                    columsPosition = i;
-                    row = index;
-                }
-                else{
-                    max = matrixA[index][i-1];
-                    columsPosition = i-1;
-                    row = index;
-                }
-            }
+
+
+
+        // int currentRow = 0;
+        // int rowsOfMatrix = matrixA.length;
+        // boolean isPeak = false;
+
+        // while (currentRow < rowsOfMatrix && !isPeak) {
             
-            index++;
-        }
+        //     System.out.println("this is row "+currentRow);
+            
+        //     // Get the maximum number in the row.
+        //     int maximumIndex = getMaxPosition(matrixA[currentRow]);
+        //     int maximumNumber =  matrixA[currentRow][maximumIndex];
 
-        System.out.println("Max number = "+max);
-        System.out.printf("\nOn row %d and column %d ", row, columsPosition);
-        
+
+        //     System.out.println("Maximum number ="+ maximumNumber);
+
+        //     // Check the columns to verify that's the smallest.
+            
+        //     for (int i = 0; i < rowsOfMatrix; i++){
+        //         int[] currentArray = matrixA[i];
+        //             if (maximumNumber < currentArray[maximumIndex ]){
+        //                 isPeak = true;
+        //             }
+        //             else{
+        //                 isPeak = false;
+        //             }
+        //     }
+
+            
+
+        //     System.out.println("This is the peak row and column: "+(currentRow+1)+ " "+ (getMaxPosition(matrixA[currentRow])+1));
+        //     // Return the row and the column;
+
+
+
+        //     currentRow++;
+        // }
+
     }
 
-    public static int getMaxIndex(){
-        return 0;
-    };
+    public static void findPeakColumn(int[][] matrix){
+
+        int currentRow = 0;
+        int rowsInMatrix = matrix.length;
+        boolean isPeak = false;
+        int peakRow = -1;
+        int peakColumn = -1;
+
+        while (currentRow < rowsInMatrix && !isPeak){
+
+            int maxIndex = getMaxPosition(matrix[currentRow]);
+            int maxValue = matrix[currentRow][maxIndex];
+
+            for (int i = 0; i < rowsInMatrix; i++){
+                int[] currentArray = matrix[i];
+
+                if (maxValue < currentArray[maxIndex]){
+                    isPeak = true;
+                }
+                else isPeak = false;
+            }
+
+            peakRow = currentRow+1;
+            peakColumn = maxIndex+1;
+
+            currentRow++;
+
+        }
+
+            System.out.println("The peak column is :"+peakRow + " "+peakColumn);
+    }
+
+    
+
+
+    private static int getMaxPosition(int[] arr){
+        int maxIndex  = -1;
+        int max = 0;
+
+        for (int i = 0; i < arr.length; i++ ){
+            if (arr[i] > max){
+                max = arr[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+
+
 }
