@@ -117,22 +117,24 @@ public class PeakColumn {
     }
 
 
-
-
-
+    /**
+     * the findPeakColumn takes the matrix as an argument and then finds the peak column in the
+     * matrix.
+     * @param matrix The matrix you want to find the peak column in.
+     */
     public static void findPeakColumn(int[][] matrix){
 
         // Initialize the minimum value and its row index for the current column
 
-        int rowsInMatrix = matrix.length;
-        int colsInMatrix = matrix[0].length;
+        int rowsInMatrix = matrix.length;       // To hold the number rows in the matrix
+        int colsInMatrix = matrix[0].length;    // to hold the number of columns in the matrix
 
         // Find the minimum value and its row index in the current column
         for (int currentColumn = 0; currentColumn < colsInMatrix; currentColumn++){
             int minValue = matrix[0][currentColumn];
             int minInColumnIndex = 0;
 
-            //Correct the minRow
+            //Find the minimum number in the column and it's position
             for (int row = 1; row < rowsInMatrix;row++){
                 if(matrix[row][currentColumn] < minValue){
                     minValue = matrix[row][currentColumn];
@@ -151,6 +153,7 @@ public class PeakColumn {
                 }
             }
 
+            // If the value is on peak column, print the value.
             if (isPeak){
                 int peakRow = minInColumnIndex+1;
                 int peakColumn = currentColumn+1;
