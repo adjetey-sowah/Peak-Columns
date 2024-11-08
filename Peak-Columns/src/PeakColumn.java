@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 /**
  * @author Julius Adjetey Sowah
- * PEAK COLUMN
- * This program
+/**
+ * The {@code PeakColumn} class provides utility methods for identifying
+ * peak columns in a matrix. A peak column element is defined as an element
+ * that is the smallest in its column and the largest in its row.
  */
+
 public class PeakColumn {
     public static void main(String[] args) throws Exception {
 
@@ -91,6 +94,8 @@ public class PeakColumn {
         return matrix;
     }
 
+    
+
     // Function to get a single matrix element with validation
     public static int getMatrixElement(int row, int col) {
         Scanner scanner = new Scanner(System.in);
@@ -109,11 +114,10 @@ public class PeakColumn {
         return element;
     }
 
-    /**
-     * The {@code MatrixPeakFinder} class provides utility methods for identifying
-     * peak columns in a matrix. A peak column element is defined as an element
-     * that is the smallest in its column and the largest in its row.
-     */
+
+
+
+
     public static void findPeakColumn(int[][] matrix){
 
         // Initialize the minimum value and its row index for the current column
