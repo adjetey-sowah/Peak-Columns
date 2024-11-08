@@ -14,6 +14,7 @@ public class PeakColumn {
     public static void main(String[] args) throws Exception {
 
 
+        // Take user input
         int[][] matrixA = getUserInput();
 
         System.out.println("Printing Matrix");
@@ -22,8 +23,9 @@ public class PeakColumn {
         System.out.println("Finding Peak Column");
         System.out.println();
         System.out.println("Peak Column: ");
-        findPeakColumn(matrixA);
 
+        // Perform the peak function
+        findPeakColumn(matrixA);
 
 
 
@@ -94,7 +96,7 @@ public class PeakColumn {
         return matrix;
     }
 
-    
+
 
     // Function to get a single matrix element with validation
     public static int getMatrixElement(int row, int col) {
@@ -161,4 +163,5 @@ public class PeakColumn {
 
 
     }
+
 }
