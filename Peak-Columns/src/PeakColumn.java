@@ -116,32 +116,37 @@ public class PeakColumn {
      */
     public static void findPeakColumn(int[][] matrix){
 
+        // Initialize the minimum value and its row index for the current column
 
         int rowsInMatrix = matrix.length;
         int colsInMatrix = matrix[0].length;
 
+        // Find the minimum value and its row index in the current column
         for (int currentColumn = 0; currentColumn < colsInMatrix; currentColumn++){
             int minValue = matrix[0][currentColumn];
-            int minRow = 0;
+            int minInColumnIndex = 0;
 
             //Correct the minRow
             for (int row = 1; row < rowsInMatrix;row++){
                 if(matrix[row][currentColumn] < minValue){
                     minValue = matrix[row][currentColumn];
-                    minRow = row;
+                    minInColumnIndex = row;
                 }
             }
 
+            // Assume the element is a peak column until proven otherwise
             boolean isPeak = true;
+
+            // Check if the found minimum value is the maximum in its row
             for(int col = 0; col < colsInMatrix; col++){
-                if (matrix[minRow][col] > minValue){
-                    isPeak = false;
-                    break;
+                if (matrix[minInColumnIndex][col] > minValue){
+                    isPeak = false;     // Not a peak if any element in the row is greater
+                    break;      // Exit the loop early since it's not a peak
                 }
             }
 
             if (isPeak){
-                int peakRow = minRow+1;
+                int peakRow = minInColumnIndex+1;
                 int peakColumn = currentColumn+1;
                 System.out.printf("""
                             (%d,%d) = %d
